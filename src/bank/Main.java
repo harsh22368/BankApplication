@@ -47,13 +47,11 @@ public class Main {
 
                             switch (op) {
                                 case "1":
-                                    System.out.print("Enter amount to deposit: ");
-                                    double dep = Double.parseDouble(scanner.nextLine());
+                                    double dep = Utils.readDouble(scanner, "Enter amount to deposit: ");
                                     bank.deposit(loggedIn, dep);
                                     break;
                                 case "2":
-                                    System.out.print("Enter amount to withdraw: ");
-                                    double wd = Double.parseDouble(scanner.nextLine());
+                                    double wd = Utils.readDouble(scanner, "Enter amount to withdraw: ");
                                     bank.withdraw(loggedIn, wd);
                                     break;
                                 case "3":
