@@ -13,25 +13,19 @@ public class Main {
             System.out.println("1. Register");
             System.out.println("2. Login");
             System.out.println("3. Exit");
-            System.out.print("Select an option: ");
-            String choice = scanner.nextLine();
+            String choice = Utils.readLine(scanner, "Select an option: ");
 
             switch (choice) {
                 case "1":
-                    System.out.print("Enter account number: ");
-                    String accNo = scanner.nextLine();
-                    System.out.print("Enter name: ");
-                    String name = scanner.nextLine();
-                    System.out.print("Enter password: ");
-                    String pass = scanner.nextLine();
+                    String accNo = Utils.readLine(scanner, "Enter account number: ");
+                    String name = Utils.readLine(scanner, "Enter name: ");
+                    String pass = Utils.readLine(scanner, "Enter password: ");
                     bank.register(accNo, name, pass);
                     break;
 
                 case "2":
-                    System.out.print("Enter account number: ");
-                    String loginAcc = scanner.nextLine();
-                    System.out.print("Enter password: ");
-                    String loginPass = scanner.nextLine();
+                    String loginAcc = Utils.readLine(scanner, "Enter account number: ");
+                    String loginPass = Utils.readLine(scanner, "Enter password: ");
                     Account loggedIn = bank.login(loginAcc, loginPass);
 
                     if (loggedIn != null) {
@@ -42,8 +36,7 @@ public class Main {
                             System.out.println("2. Withdraw");
                             System.out.println("3. View Account Info");
                             System.out.println("4. Logout");
-                            System.out.print("Select an option: ");
-                            String op = scanner.nextLine();
+                            String op = Utils.readLine(scanner, "Select an option: ");
 
                             switch (op) {
                                 case "1":
