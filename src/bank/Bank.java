@@ -11,6 +11,37 @@ public class Bank {
         loadAccounts();
     }
 
+    public static boolean register(String username, String password, double balance) {
+        try {
+            File file = new File("accounts.txt");
+            if (!file.exists()) file.createNewFile();
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            // Check if username exists
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts[0].equals(username)) {
+                    br.close();
+                    return false; // username taken
+                }
+            }
+            br.close();
+
+            // Append new user
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+            bw.write(username + "," + password + "," + balance);
+            bw.newLine();
+            bw.close();
+            return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     // Register a new user
     public void register(String accountNumber, String name, String password) {
         if (accounts.containsKey(accountNumber)) {
